@@ -1,7 +1,4 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('basic-login', 'postgres', 'postgres', {
-    host: 'localhost', // Change to docker 
-    dialect: 'postgres'
-});
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize("postgres://postgres:postgres@postgres:5432/postgres");
 
 module.exports = sequelize;

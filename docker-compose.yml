@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      WATCHPACK_POLLING: "true"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - ./api:/api
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+      POSTGRES_PASSWORD: postgres
+      NODE_ENV: development
+      DEBUG: nodejs-docker-express:*
+      
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "postgres"

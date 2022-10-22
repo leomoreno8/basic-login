@@ -10,7 +10,6 @@ User.init({
     email: Sequelize.STRING,
     username: Sequelize.STRING,
     passwordHash: Sequelize.STRING
-
 }, {sequelize, modelName: 'user', schema});
 
 sequelize.sync();
