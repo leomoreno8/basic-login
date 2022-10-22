@@ -82,7 +82,14 @@ export default function Login() {
 
               </Form>
           </Formik>
+          <div className={styles.create_account}>
+            <span>Don't have an account?</span>
+            <Link href="/singup">
+              <span className={styles.create_account_link}>CREATE HERE</span>
+            </Link>
+          </div>
         </div>
+
         <ToastContainer
             position="bottom-center"
             autoClose={5000}

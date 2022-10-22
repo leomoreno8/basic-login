@@ -9,13 +9,13 @@ export default function ShadowButton(props: ShadowButton) {
     return ( 
       // SHADOW BUTTON CONTAINER
       <div className={styles.login_container}>
-            <button>
+            <section>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 {props.text}
-            </button>
+            </section>
       </div>
     );
 }
