@@ -6,23 +6,25 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup"
 import Axios from "axios"
 import { ToastContainer } from 'react-toastify'
-import ToastError from "../../components/ToastError/index"
+import ToastError from "../ToastError/index"
 
 
-export default function Login() {
+export default function Singup() {
 
-  async function handleClickLogin(values: { email: string; password: string; }) {
-      let URL = process.env.NEXT_PUBLIC_APIURL + "auth/user-login";
-
-      const login = await Axios.post(URL, {
-          email: values.email,
-          password: values.password,
-      })
-
-      ToastError(login.data);
+  async function handleClickRegister(values: { name: string;  email: string; password: string; }) {
+    const register = await Axios.post(process.env.API_URL + "user/create", {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    })
+    console.log(register);
   }
 
+
   const validationLogin = yup.object().shape({
+      name: yup
+        .string()
+        .required("This field is required"),
       email: yup
         .string()
         .email("Invalid Email")
@@ -39,11 +41,20 @@ export default function Login() {
         {/* LOGIN BOX  */}
         <div className={styles.login_box}>
           <Formik
-          initialValues={{'email': '', 'password': ''}}
-          onSubmit={handleClickLogin}
+          initialValues={{'name': '', 'email': '', 'password': ''}}
+          onSubmit={handleClickRegister}
           validationSchema={validationLogin}
           >
             <Form className={styles.inputs_container}>
+              <div>
+                <Field name="name" placeholder="Name" />
+                <ErrorMessage 
+                  component="span"
+                  name="name"
+                  className={styles.form_error}
+                />
+              </div>
+
               <div>
                 <Field name="email" placeholder="Email" />
                 <ErrorMessage 
@@ -64,16 +75,16 @@ export default function Login() {
 
               <div className={styles.button_login_box}> 
                 <button type="submit">
-                  <ShadowButton text='LOGIN'/>
+                  <ShadowButton text='SING UP'/>
                 </button>
               </div>
 
             </Form>
           </Formik>
           <div className={styles.create_account}>
-            <span>Don't have an account?</span>
-            <Link href="/signup">
-              <span className={styles.create_account_link}>SIGN UP HERE</span>
+            <span>Already have an account?</span>
+            <Link href="/">
+              <span className={styles.create_account_link}>LOGIN HERE</span>
             </Link>
           </div>
         </div>
