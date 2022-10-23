@@ -12,7 +12,6 @@ const Home: NextPage = () => {
 
     function loggedFunction() {
         const cookie = jsCookie.get();
-        console.log(cookie);
         if(!cookie.hasOwnProperty("token")) {
             setLogged(false);
             Router.push('/');
