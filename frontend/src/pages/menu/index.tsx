@@ -6,6 +6,7 @@ import styles from '../../styles/Home.module.scss'
 import jsCookie from 'js-cookie';
 import Router from 'next/router';
 import Products from '../../components/Products'
+import Header from '../../components/Header'
 
 const Home: NextPage = () => {
     async function logout() {
@@ -30,9 +31,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        {/* <button onClick={logout}>LOGOUT</button> */}
+        <Header />
         <h1>PRODUCTS</h1>
         {/* <Singup /> */}
-        <button onClick={logout}>LOGOUT</button>
         <Products />
       </main>
       <Footer />
