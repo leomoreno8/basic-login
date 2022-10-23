@@ -1,12 +1,14 @@
 # BASIC-LOGIN
 
+This project consists of two projects, a frontend with a login screen, a registration screen and an internal one. And a backend, an API for registration/login.
+
 This project has been containerized for easy build.
 
 To run it, just have Docker installed and use the `docker-compose up` command in the project root.
 
 Any questions, send a message to the author.
 
-Enjoy 🥳
+There will still be improvements here. Feel free to use. Enjoy 🥳
 
 ## Frontend
 
