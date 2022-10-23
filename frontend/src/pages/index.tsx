@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1>BASIC LOGIN</h1>
+        <h1>LOGIN</h1>
         <Login />
       </main>
       <Footer />
