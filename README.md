@@ -4,7 +4,7 @@ This project consists of two projects, a frontend with a login screen, a registr
 
 This project has been containerized for easy build.
 
-To run it, just have Docker installed and use the `docker-compose up` command in the project root.
+To run it, just have Docker installed and use the `docker-compose up` command in the project root. (You need postgres too. You can download DBeaver which is successful.)
 
 Any questions, send a message to the author.
 
