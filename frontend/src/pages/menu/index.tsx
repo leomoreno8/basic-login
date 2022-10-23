@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '../../components/Footer'
 import styles from '../../styles/Home.module.scss'
 import jsCookie from 'js-cookie';
@@ -9,33 +9,42 @@ import Products from '../../components/Products'
 import Header from '../../components/Header'
 
 const Home: NextPage = () => {
-    async function logout() {
-        jsCookie.remove("token");
-        Router.push('/');
-    }
-    
-    useEffect(() => {
-        const cookie = jsCookie.get();
 
+    function loggedFunction() {
+        const cookie = jsCookie.get();
+        console.log(cookie);
         if(!cookie.hasOwnProperty("token")) {
+            setLogged(false);
             Router.push('/');
-        } 
+        } else {
+            setLogged(true);
+        }
+    }
+
+    const [logged, setLogged] = useState(false);
+     
+    useEffect(() => {
+        loggedFunction();
       }, []);
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Basic Login</title>
-        <meta name="description" content="Basic Login App" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <div className={styles.container}>
+        <Head>
+            <title>Basic Login</title>
+            <meta name="description" content="Basic Login App" />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <main className={styles.main}>
-        <Header />
-        <h1>PRODUCTS</h1>
-        <Products />
-      </main>
-      <Footer />
+        {logged && (
+            <>
+                <main className={styles.main}>
+                    <Header />
+                    <h1>PRODUCTS</h1>
+                    <Products />
+                </main>
+                <Footer />        
+            </>
+        )}
     </div>
   )
 }
