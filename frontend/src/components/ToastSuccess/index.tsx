@@ -1,9 +1,7 @@
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function ToastSuccess(message: string) {
-
     const notifySuccess = () =>  toast.success('✅' + message, {
         position: "bottom-center",
         autoClose: 5000,
@@ -13,7 +11,6 @@ function ToastSuccess(message: string) {
         draggable: true,
         progress: undefined,
     });
-
     notifySuccess();
 }
 

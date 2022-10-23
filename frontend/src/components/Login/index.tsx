@@ -13,6 +13,7 @@ import jsCookie from 'js-cookie';
 export default function Login() {
 
   async function handleClickLogin(values: { email: string; password: string; }) {
+
     let URL = process.env.NEXT_PUBLIC_APIURL + "/login";
 
     try {
@@ -34,16 +35,15 @@ export default function Login() {
   }
 
   const validationLogin = yup.object().shape({
-      email: yup
-        .string()
-        .email("Invalid Email")
-        .required("This field is required"),
-      password: yup
-        .string()
-        .min(8, "Invalid Password")
-        .required("This field is required"),
+    email: yup
+      .string()
+      .email("Invalid Email")
+      .required("This field is required"),
+    password: yup
+      .string()
+      .min(8, "Invalid Password")
+      .required("This field is required"),
   });
-
 
     return ( 
       <div className={styles.login_container}>
@@ -78,7 +78,6 @@ export default function Login() {
                   <ShadowButton text='LOGIN'/>
                 </button>
               </div>
-
             </Form>
           </Formik>
           <div className={styles.create_account}>
@@ -100,7 +99,7 @@ export default function Login() {
           draggable
           pauseOnHover
           theme="dark"
-          />
+        />
       </div>
     );
 }

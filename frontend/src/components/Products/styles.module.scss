@@ -1,5 +1,4 @@
 @supports (display: grid) {
-
   .grid {
     display: grid;
     grid-gap: 1.5vw;
@@ -64,7 +63,6 @@
 
 }
 
-/* flexbox fallback is the browser does not support display:grid */
 @supports not (display: grid) {
 
   .grid {

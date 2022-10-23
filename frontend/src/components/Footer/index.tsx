@@ -10,7 +10,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-           <img src='github-blue-icon.png' /> Leonardo Moreno
+          <img src='github-blue-icon.png' /> Leonardo Moreno
         </a>
       </footer>
     );

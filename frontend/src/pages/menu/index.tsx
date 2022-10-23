@@ -8,7 +8,6 @@ import Router from 'next/router';
 import Products from '../../components/Products'
 
 const Home: NextPage = () => {
-
     async function logout() {
         jsCookie.remove("token");
         Router.push('/');
@@ -33,9 +32,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1>PRODUCTS</h1>
         {/* <Singup /> */}
-        <button onClick={logout}>
-            LOGOUT
-        </button>
+        <button onClick={logout}>LOGOUT</button>
         <Products />
       </main>
       <Footer />

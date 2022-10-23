@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.login_container {
+.singup_container {
     // background-image: linear-gradient(to bottom right, $primary-gradient, $second-gradient);
     width: 300px;
     height: 400px;
@@ -22,12 +22,12 @@
     ) 1 100%;
 }
 
-.login_box {
+.singup_box {
     display: flex;
     flex-direction: column;
 }
 
-.login_box input {
+.singup_box input {
     background-color: $white;
     border-color: none;
     color: $black;
@@ -39,7 +39,7 @@
     margin-bottom: 0.5rem;
 }
 
-.button_login_box {
+.button_singup_box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -50,23 +50,23 @@
     margin-top: 2rem;
 }
 
-.button_login_box a {
+.button_singup_box a {
     color: $black;
     font-size: 0.8rem;
 }
 
-.button_login_box button {
+.button_singup_box button {
     width: 100%;
 }
   
-.login_box .inputs_container input {
+.singup_box .inputs_container input {
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
 }
   
-.login_box .inputs_container input:focus ~ span,
-.login_box .inputs_container input:valid ~ span {
+.singup_box .inputs_container input:focus ~ span,
+.singup_box .inputs_container input:valid ~ span {
     left: 0;
     color: $white;
     font-size: 1rem;

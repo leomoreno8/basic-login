@@ -1,17 +1,17 @@
 @import '../../styles/variables.scss';
 
 .footer {
-    display: flex;
-    flex: 1;
-    padding: 2rem 0;
-    border-top: 1px solid #eaeaea;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3rem;
-  }
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
   
-  .footer a {
-    align-items: center;
-    border-bottom: 1px solid $white;
-  }
+.footer a {
+  align-items: center;
+  border-bottom: 1px solid $white;
+}
   

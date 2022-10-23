@@ -2,7 +2,6 @@ import React from 'react';
 import styles from "./styles.module.scss";
 
 export default function Products() {
-
     return (
         <div className={styles.grid}>
             <div className={styles.item} tabIndex={1}>

@@ -11,7 +11,6 @@ import ToastSuccess from "../ToastSuccess/index"
 import Router from 'next/router';
 
 export default function Singup() {
-
   async function handleClickRegister(values: { name: string;  email: string; password: string; }) {
 
     let URL = process.env.NEXT_PUBLIC_APIURL + "/users";
@@ -29,7 +28,7 @@ export default function Singup() {
         ToastSuccess("User created successfully!");
         setTimeout(() => {
           Router.push('/');
-      }, 6000);
+        }, 6000);
       }
       
     } catch (error) {
@@ -37,26 +36,25 @@ export default function Singup() {
     }
   }
 
-
   const validationLogin = yup.object().shape({
-      name: yup
-        .string()
-        .required("This field is required"),
-      email: yup
-        .string()
-        .email("Invalid Email")
-        .required("This field is required"),
-      password: yup
-        .string()
-        .min(8, "Invalid Password")
-        .required("This field is required"),
+    name: yup
+      .string()
+      .required("This field is required"),
+    email: yup
+      .string()
+      .email("Invalid Email")
+      .required("This field is required"),
+    password: yup
+      .string()
+      .min(8, "Invalid Password")
+      .required("This field is required"),
   });
 
 
     return ( 
-      <div className={styles.login_container}>
-        {/* REGISTER BOX  */}
-        <div className={styles.login_box}>
+      <div className={styles.singup_container}>
+        {/* SINGUP BOX  */}
+        <div className={styles.singup_box}>
           <Formik
           initialValues={{'name': '', 'email': '', 'password': ''}}
           onSubmit={handleClickRegister}
@@ -95,7 +93,6 @@ export default function Singup() {
                   <ShadowButton text='SING UP'/>
                 </button>
               </div>
-
             </Form>
           </Formik>
           <div className={styles.create_account}>
