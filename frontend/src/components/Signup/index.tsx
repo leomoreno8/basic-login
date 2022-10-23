@@ -10,7 +10,7 @@ import ToastError from "../ToastError/index"
 import ToastSuccess from "../ToastSuccess/index"
 import Router from 'next/router';
 
-export default function Singup() {
+export default function Signup() {
   async function handleClickRegister(values: { name: string;  email: string; password: string; }) {
 
     let URL = process.env.NEXT_PUBLIC_APIURL + "/users";
@@ -52,9 +52,9 @@ export default function Singup() {
 
 
     return ( 
-      <div className={styles.singup_container}>
-        {/* SINGUP BOX  */}
-        <div className={styles.singup_box}>
+      <div className={styles.signup_container}>
+        {/* SIGNUP BOX  */}
+        <div className={styles.signup_box}>
           <Formik
           initialValues={{'name': '', 'email': '', 'password': ''}}
           onSubmit={handleClickRegister}
@@ -88,9 +88,9 @@ export default function Singup() {
                 />
               </div>
 
-              <div className={styles.button_login_box}> 
+              <div className={styles.button_signup_box}> 
                 <button type="submit">
-                  <ShadowButton text='SING UP'/>
+                  <ShadowButton text='SIGN UP'/>
                 </button>
               </div>
             </Form>

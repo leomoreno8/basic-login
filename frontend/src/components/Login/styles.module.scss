@@ -82,5 +82,6 @@
 }
 
 .create_account_link:hover{
-    color: $white
+    color: $white;
+    transition: .5s;
 }
