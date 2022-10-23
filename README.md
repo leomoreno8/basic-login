@@ -35,4 +35,5 @@ Project: frontend
 Project: api
 
 - NodeJS
-- Sequelize
+- SequelizeJS
+- Express
