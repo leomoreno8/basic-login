@@ -7,17 +7,34 @@ import * as yup from "yup"
 import Axios from "axios"
 import { ToastContainer } from 'react-toastify'
 import ToastError from "../ToastError/index"
-
+import ToastSuccess from "../ToastSuccess/index"
+import Router from 'next/router';
 
 export default function Singup() {
 
   async function handleClickRegister(values: { name: string;  email: string; password: string; }) {
-    const register = await Axios.post(process.env.API_URL + "user/create", {
-      name: values.name,
-      email: values.email,
-      password: values.password,
-    })
-    console.log(register);
+
+    let URL = process.env.NEXT_PUBLIC_APIURL + "/users";
+
+    try {
+      const register = await Axios.post(URL, {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      })
+
+      if(register.data == "User already exists") {
+        ToastError(register.data);
+      } else {
+        ToastSuccess("User created successfully!");
+        setTimeout(() => {
+          Router.push('/');
+      }, 6000);
+      }
+      
+    } catch (error) {
+      ToastError("There was an error creating the user. Try Again");
+    }
   }
 
 
@@ -38,7 +55,7 @@ export default function Singup() {
 
     return ( 
       <div className={styles.login_container}>
-        {/* LOGIN BOX  */}
+        {/* REGISTER BOX  */}
         <div className={styles.login_box}>
           <Formik
           initialValues={{'name': '', 'email': '', 'password': ''}}
@@ -65,7 +82,7 @@ export default function Singup() {
               </div>
 
               <div>
-                <Field name="password" placeholder="Password" />
+                <Field name="password" type="password" placeholder="Password" />
                 <ErrorMessage 
                   component="span"
                   name="password"

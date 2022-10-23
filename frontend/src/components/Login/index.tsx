@@ -7,19 +7,31 @@ import * as yup from "yup"
 import Axios from "axios"
 import { ToastContainer } from 'react-toastify'
 import ToastError from "../../components/ToastError/index"
-
+import Router from 'next/router';
+import jsCookie from 'js-cookie';
 
 export default function Login() {
 
   async function handleClickLogin(values: { email: string; password: string; }) {
-      let URL = process.env.NEXT_PUBLIC_APIURL + "auth/user-login";
+    let URL = process.env.NEXT_PUBLIC_APIURL + "/login";
 
+    try {
       const login = await Axios.post(URL, {
-          email: values.email,
-          password: values.password,
+        email: values.email,
+        password: values.password,
       })
 
-      ToastError(login.data);
+      if(login.data.error) {
+        ToastError(login.data.error);
+      } else {
+        console.log(login.data.token);
+        jsCookie.set('token', login.data.token);
+        Router.push('/menu');
+      }
+      
+    } catch (error) {
+      ToastError("There was an error logging in. Try again.");
+    }
   }
 
   const validationLogin = yup.object().shape({
@@ -54,7 +66,7 @@ export default function Login() {
               </div>
 
               <div>
-                <Field name="password" placeholder="Password" />
+                <Field name="password" type="password" placeholder="Password" />
                 <ErrorMessage 
                   component="span"
                   name="password"
