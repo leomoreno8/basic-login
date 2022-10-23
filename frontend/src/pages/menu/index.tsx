@@ -31,10 +31,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        {/* <button onClick={logout}>LOGOUT</button> */}
         <Header />
         <h1>PRODUCTS</h1>
-        {/* <Singup /> */}
         <Products />
       </main>
       <Footer />
