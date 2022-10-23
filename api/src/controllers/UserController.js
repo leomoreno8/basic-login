@@ -46,11 +46,8 @@ module.exports = {
             const user = await User.findOne({ where: { email: email } });
             if(user) {
                 const passwordValid = await Hashing.compare(password, user.passwordHash);
-                if(passwordValid){
-                    console.error('QUASE' + process.env.JWT_SECRET);
-
+                if(passwordValid) {
                     let token = jwt.sign({ "id" : user.id,"email" : user.email,"name":user.name }, process.env.JWT_SECRET);
-                    console.error('FOI' + token);
                     res.status(200).json({ token : token });
                 } else {
                     res.json({ error : "User or Password Incorrect" });

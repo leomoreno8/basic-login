@@ -24,7 +24,6 @@ export default function Login() {
       if(login.data.error) {
         ToastError(login.data.error);
       } else {
-        console.log(login.data.token);
         jsCookie.set('token', login.data.token);
         Router.push('/menu');
       }
