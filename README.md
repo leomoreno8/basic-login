@@ -10,6 +10,17 @@ Any questions, send a message to the author.
 
 There will still be improvements here. Feel free to use. Enjoy 🥳
 
+## Requirements
+
+- Node 16+
+- Docker
+- Postgres (ex: DBeaver)
+
+## Run project
+`docker-compose up` command in the project root.
+Enjoy 🥳
+
+
 ## Frontend
 
 Project: frontend
