@@ -70,18 +70,18 @@
     font-size: 1rem;
 }
 
-.create_account {
+.login {
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
 }
 
-.create_account_link{
+.login_link{
     color: $purple;
     cursor: pointer;
 }
 
-.create_account_link:hover{
+.login_link:hover{
     color: $white;
     transition: .5s;
 }

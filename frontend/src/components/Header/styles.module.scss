@@ -19,42 +19,6 @@
     flex-direction: column;
 }
 
-.header_box input {
-    background-color: $white;
-    border-color: none;
-    color: $black;
-    border: none;
-    outline: none;
-    height: 1rem;
-    padding: 1rem;
-    border-radius: 0.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.button_header_box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    width: 100%;
-    margin-top: 2rem;
-}
-  
-.header_box .inputs_container input {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-}
-  
-.header_box .inputs_container input:focus ~ span,
-.header_box .inputs_container input:valid ~ span {
-    left: 0;
-    color: $white;
-    font-size: 1rem;
-}
-
 .logout_link{
     color: $purple;
     cursor: pointer;

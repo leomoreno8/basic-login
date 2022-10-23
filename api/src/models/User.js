@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db.js');
-
 const schema = 'public';
 
 class User extends Sequelize.Model {}

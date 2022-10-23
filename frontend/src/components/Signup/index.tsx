@@ -95,10 +95,10 @@ export default function Signup() {
               </div>
             </Form>
           </Formik>
-          <div className={styles.create_account}>
+          <div className={styles.login}>
             <span>Already have an account?</span>
             <Link href="/">
-              <span className={styles.create_account_link}>LOGIN HERE</span>
+              <span className={styles.login_link}>LOGIN HERE</span>
             </Link>
           </div>
         </div>

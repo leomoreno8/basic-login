@@ -1,9 +1,8 @@
 const express = require('express');
-
 const UserController = require('./controllers/UserController');
-
 const routes = express.Router();
 const cors = require('./cors');
+
 routes.use(cors());
 
 // I left the entire CRUD for in case it's needed in the future.
