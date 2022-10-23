@@ -6,6 +6,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
+
+    // I left the entire CRUD for in case it's needed in the future.
+    // I will pass on the business rules for services shortly. I'm out of time :(
+
     async list(req, res){
         try {
             const users = await User.findAll()
