@@ -68,10 +68,10 @@ module.exports = {
     async update(req, res){
         const Sequelize = require('sequelize');
         const Op = Sequelize.Op
-        const { name, email, username, password } = req.body;
+        const { name, email, password } = req.body;
         const id = req.params.id;
         try {
-            await User.update({name, email, username, password}, {where: {id: {[Op.eq]: id }}});
+            await User.update({name, email, password}, {where: {id: {[Op.eq]: id }}});
             return res.json({msg: `User ${name} successfully updated!`});
         } catch (error) {
             return res.json({msg: `User ${name} has not been updated`}, err);            
