@@ -8,7 +8,6 @@ class User extends Sequelize.Model {}
 User.init({
     name: Sequelize.STRING,
     email: Sequelize.STRING,
-    username: Sequelize.STRING,
     passwordHash: Sequelize.STRING
 }, {sequelize, modelName: 'user', schema});
 

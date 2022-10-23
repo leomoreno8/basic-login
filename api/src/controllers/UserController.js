@@ -1,4 +1,9 @@
-const Movie = require('../models/User');
+const Hashing = require("../helpers/security/hashing.security");
+const { findOne } = require("../models/User");
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
     async list(req, res){
@@ -20,31 +25,61 @@ module.exports = {
     },
 
     async create(req, res){
-        const {name, email, username, passwordHash} = req.body;
+        const {name, email, password} = req.body;
         try {
-            const user = await User.create({name, email, username, passwordHash});
-            return res.json(user);
+            const exists = await User.count({ where: { email: email } });
+            if(exists == 0) {
+                const passwordHash = await Hashing.hash(password)
+                const user = await User.create({name, email, passwordHash});
+                return res.json(user);
+            } else {
+                return res.json("User already exists");
+            }
         } catch (error) {
-            return console.error('User creation error', err);
+            return console.error('User creation error', error);
+        }
+    },
+
+    async login(req, res){
+        const {email, password} = req.body;
+        try {
+            const user = await User.findOne({ where: { email: email } });
+            if(user) {
+                const passwordValid = await Hashing.compare(password, user.passwordHash);
+                if(passwordValid){
+                    console.error('QUASE' + process.env.JWT_SECRET);
+
+                    let token = jwt.sign({ "id" : user.id,"email" : user.email,"name":user.name }, process.env.JWT_SECRET);
+                    console.error('FOI' + token);
+                    res.status(200).json({ token : token });
+                } else {
+                    res.json({ error : "User or Password Incorrect" });
+                }
+            
+            } else {
+                res.json({ error : "User or Password Incorrect" });
+            }
+        } catch (error) {
+            return console.error('Failed to login', error);
         }
     },
 
     async update(req, res){
         const Sequelize = require('sequelize');
         const Op = Sequelize.Op
-        const { name, email, username, passwordHash } = req.body;
+        const { name, email, username, password } = req.body;
         const id = req.params.id;
         try {
-            await Movie.update({title, poster, overview}, {where: {id: {[Op.eq]: id }}});
-            return res.json({msg: `User ${title} successfully updated!`});
+            await User.update({name, email, username, password}, {where: {id: {[Op.eq]: id }}});
+            return res.json({msg: `User ${name} successfully updated!`});
         } catch (error) {
-            return res.json({msg: `User ${title} has not been updated`}, err);            
+            return res.json({msg: `User ${name} has not been updated`}, err);            
         }
     },
 
     async delete(req, res){
         try {
-            await Movie.destroy({where: {id: req.params.id }});
+            await User.destroy({where: {id: req.params.id }});
             return res.json({msg: `user  ${req.params.id} deletion done successfull!`});
         } catch (err) {
             return console.err("Deletion error: ", err);
